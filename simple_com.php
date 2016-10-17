@@ -45,3 +45,42 @@ function create_key_post_user()
 register_activation_hook( __FILE__, 'create_key_post_user' );
 
 /* end key_post_user */
+
+/* creation of the table sold_user */
+
+global $create_sold_user;
+$create_sold_user_version = '1.0';
+
+function create_sold_user()
+{
+	global $wpdb;
+	global $create_sold_user_version;
+
+	$table_name = $wpdb->prefix . "sold_user";
+	$charset_collate = $wpdb->get_charset_collate();
+
+	$sql = "CREATE TABLE $table_name (
+  id mediumint(9) NOT NULL AUTO_INCREMENT,
+  time datetime NOT NULL,
+  user mediumint(10) NOT NULL,
+  article mediumint(10) NOT NULL,
+  PRIMARY KEY  (id)
+	) $charset_collate;";
+
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	dbDelta( $sql );
+
+	add_option('create_sold_version', $create_sold_user_version);
+}
+
+register_activation_hook( __FILE__, 'create_sold_user' );
+
+/* end key_post_user */
+
+/* Get data's post */
+/* Js to do */
+/* end data */
+
+/* place for facebook api */
+/* end facebook */
+
