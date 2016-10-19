@@ -13,6 +13,14 @@ License: GPL2
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+function bbx_enqueue_scripts() {
+
+	wp_enqueue_script( 'jquery' );
+
+}
+add_action( 'wp_enqueue_scripts', 'bbx_enqueue_scripts' );
+wp_enqueue_script('simple_com.js', '/wp-content/plugins/simple_com/simple_com.js');
+
 /* creation of the table key_post_user */
 
 global $create_key_post_user;
@@ -81,32 +89,8 @@ register_activation_hook( __FILE__, 'create_sold_user' );
 /* Js to do */
 /* end data */
 
-/* place for facebook api */
-//include("api_fb.html");
-// add_action('wp_insert_post','wp_champs_perso');
+/* place for boxes */
 
-// function wp_champs_perso($post_id){
-// 	if ( get_post_type($post_id)=='post'){
-// 		add_post_meta($post_id, 'champs1', '', true);
-// 	}
-// 	return true;
-// }
-function bbx_enqueue_scripts() { wp_enqueue_script( 'jquery' ); } add_action( 'wp_enqueue_scripts', 'bbx_enqueue_scripts' );
-include("box_facebook_mail.php");
-wp_enqueue_script('simple_com.js', '/wp-content/plugins/simple_com/simple_com.js');
+include("initialisation_metaboxes.php");
 
-
-/* end facebook */
-add_action('admin_init', 'mail_to_users');
-
-
-function mail_to_users() {
-	/* function mail */
-	$to      = "jerome.mogue@eemi.com";
-	$subject = "objet";
-	$message = "article";
-	$headers = array('Content-Type: text/html; charset=UTF-8');
-
-	wp_mail( $to, $subject, $message, $headers);
-/* end mail */
-} 
+/* end boxes */

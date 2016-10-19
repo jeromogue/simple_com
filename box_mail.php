@@ -1,22 +1,22 @@
 <?php
 
-//initialisation
-add_action('add_meta_boxes','initialisation_metaboxes');
-function initialisation_metaboxes(){
-
-	add_meta_box('id_meta', 'Partage Facebook', 'box_partage_facebook', 'post');
-}
-
 //ecriture de la box
+function box_mail($post){
+
+	$val_mail = get_post_meta($post->ID,'_box_mail', true);
+
+	echo '<label for="subject_mail"> Mail\'s subject :</label>';
+	echo '<input id="subject_mail" type="text" name="subject_mail" /><br />';
+	echo '<label for="list_target">Send to :</label>';
+	echo '<select id="liste_users" name="list_target">';
+	echo '<option ' . selected( 'Target users', $users, false ) . ' value="target_users">Target</option>';
+	echo '<option ' . selected( 'All', $users, false ) . ' value="all_users">All users</option>';
+	echo '</select><br />';
+	echo '<label for="text_mail">Corpus area</label>';
+	echo '<textarea id="text_mail" name="text_mail" style="width:100%; height:200px;"></textarea><br />';
+	echo '<button id="send_mail">Send</button>';
 
 
-//sauvegarde du post
-add_action('save_post', 'save_metaboxes');
-function save_metaboxes($post_ID){
-
-	if(isset($_POST["titre_partage"])){
-		update_post_meta($post_ID, '_ma_valeur', esc_html($_POST['titre_partage']));
-	}
 }
 
 // Ressortir les values via une requete
