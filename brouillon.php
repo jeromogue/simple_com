@@ -18,17 +18,5 @@ function request_all_users()
 }
 /* end all users*/
 
-add_action('admin_init', 'mail_to_users');
 
-
-function mail_to_users() {
-	/* function mail */
-	$to      = "jerome.mogue@eemi.com";
-	$subject = "objet";
-	$message = "article";
-	$headers = array('Content-Type: text/html; charset=UTF-8');
-
-	wp_mail( $to, $subject, $message, $headers);
-/* end mail */
-}
 ?>

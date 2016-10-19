@@ -82,5 +82,31 @@ register_activation_hook( __FILE__, 'create_sold_user' );
 /* end data */
 
 /* place for facebook api */
-/* end facebook */
+//include("api_fb.html");
+// add_action('wp_insert_post','wp_champs_perso');
 
+// function wp_champs_perso($post_id){
+// 	if ( get_post_type($post_id)=='post'){
+// 		add_post_meta($post_id, 'champs1', '', true);
+// 	}
+// 	return true;
+// }
+function bbx_enqueue_scripts() { wp_enqueue_script( 'jquery' ); } add_action( 'wp_enqueue_scripts', 'bbx_enqueue_scripts' );
+include("box_facebook_mail.php");
+wp_enqueue_script('simple_com.js', '/wp-content/plugins/simple_com/simple_com.js');
+
+
+/* end facebook */
+add_action('admin_init', 'mail_to_users');
+
+
+function mail_to_users() {
+	/* function mail */
+	$to      = "jerome.mogue@eemi.com";
+	$subject = "objet";
+	$message = "article";
+	$headers = array('Content-Type: text/html; charset=UTF-8');
+
+	wp_mail( $to, $subject, $message, $headers);
+/* end mail */
+} 
