@@ -29,85 +29,54 @@ wp_enqueue_script('simple_com.js', '/wp-content/plugins/simple_com/simple_com.js
 add_action( 'admin_menu', 'simple_com_menu' );
 
 function simple_com_menu() {
-	add_options_page( 'My Plugin Options', 'Simple_com', 'manage_options', 'my-slug', 'my_plugin_callback' );
+	add_options_page( 'My Plugin Options', 'Simple_com', 'manage_options', 'my-slug', 'simple_com_menu_callback' );
 }
 
 function simple_com_menu_callback() {
 	echo '<div class="wrap">';
 	echo '<h2>Simple com Settings</h2>';
-	echo '</div>'; 
+	echo '</div>';
+
 }
 
-/* creation of the table key_post_user */
+/* creation of the table options_simple_com */
 
-global $create_key_post_user;
-$create_key_post_user_version = '1.0';
+global $create_options_table;
+$create_options_table_version = '1.0';
 
-function create_key_post_user()
+// create options table in the bo
+
+function create_options_table()
 {
 	global $wpdb;
-	global $create_key_post_user_version;
+	global $create_options_table_version;
 
-	$table_name = $wpdb->prefix . "key_post_user";
+	$table_name = $wpdb->prefix . "options_simple_com";
 	$charset_collate = $wpdb->get_charset_collate();
 
 	$sql = "CREATE TABLE $table_name (
   id mediumint(9) NOT NULL AUTO_INCREMENT,
   time datetime NOT NULL,
-  user mediumint(10) NOT NULL,
-  used mediumint(9) DEFAULT '0' NOT NULL,
-  post mediumint(10) NOT NULL,
-  key_user varchar(32) NOT NULL,
+  option_name text() NOT NULL,
+  option_state text() NOT NULL,
   PRIMARY KEY  (id)
 	) $charset_collate;";
 
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
 
-	add_option('create_key_post_user_version', $create_key_post_user_version);
+	add_option('create_option_table_version', $create_options_table_version);
 }
 
-register_activation_hook( __FILE__, 'create_key_post_user' );
-
-/* end key_post_user */
-
-/* creation of the table sold_user */
-
-global $create_sold_user;
-$create_sold_user_version = '1.0';
-
-function create_sold_user()
-{
-	global $wpdb;
-	global $create_sold_user_version;
-
-	$table_name = $wpdb->prefix . "sold_user";
-	$charset_collate = $wpdb->get_charset_collate();
-
-	$sql = "CREATE TABLE $table_name (
-  id mediumint(9) NOT NULL AUTO_INCREMENT,
-  time datetime NOT NULL,
-  user mediumint(10) NOT NULL,
-  article mediumint(10) NOT NULL,
-  PRIMARY KEY  (id)
-	) $charset_collate;";
-
-	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-	dbDelta( $sql );
-
-	add_option('create_sold_version', $create_sold_user_version);
-}
-
-register_activation_hook( __FILE__, 'create_sold_user' );
-
-/* end key_post_user */
-
-/* Get data's post */
-/* Js to do */
-/* end data */
+register_activation_hook( __FILE__, 'create_options_table' );
 
 /* place for boxes */
 
 include("initialisation_metaboxes.php");
 
 /* end boxes */
+
+// a faire demain
+// passer le partage fb sur la liste d'article.
+// faire les options du bo
+// faire les tables pour les options du bo
