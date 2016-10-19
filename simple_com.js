@@ -10,16 +10,6 @@ window.onload = function(){
 		$('#text_share').val(title);		
 	});
 
-	// $('#wpwrap').on('click','#content_ifr',function(){
-	// 	alert("w");
-	// });
-
-	// $('#tinymce[data-id=content]').on('click', function(){
-	// 	alert('bag');
-	// });
-
-	// ajax mail
-
 	$('#send_mail').on('click', function(e){
 		var subject = $('#subject_mail').val();
 		var users = $('#liste_users').val();
@@ -42,27 +32,32 @@ window.onload = function(){
 
 	window.fbAsyncInit = function() {
 	FB.init({
-	appId      : '877169725742238',
+	appId      : '182783125460188',
 	xfbml      : true,
 	version    : 'v2.8'
 	});
 	FB.AppEvents.logPageView();
 	};
 
-	(function(d, s, id){
-	var js, fjs = d.getElementsByTagName(s)[0];
-	if (d.getElementById(id)) {return;}
-	js = d.createElement(s); js.id = id;
-	js.src = "//connect.facebook.net/en_US/sdk.js";
-	fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
 
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8&appId=182783125460188";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 	document.getElementById('shareBtn').onclick = function() {
 		FB.ui({
-		method: 'share',
-		display: 'popup',
-		href: 'https://developers.facebook.com/docs/',
-		}, function(response){});
+			method: 'share_open_graph',
+			action_type: 'og.likes',
+			action_properties: JSON.stringify({
+				object:'google.fr',
+			})
+		}, function(response){
+			// Debug response (optional)
+			console.log(response);
+		});
 	}
 };

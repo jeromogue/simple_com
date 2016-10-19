@@ -12,6 +12,7 @@ License: GPL2
 */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+// lancement js et jquery
 
 function bbx_enqueue_scripts() {
 
@@ -20,6 +21,22 @@ function bbx_enqueue_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'bbx_enqueue_scripts' );
 wp_enqueue_script('simple_com.js', '/wp-content/plugins/simple_com/simple_com.js');
+
+// fin js
+
+// Création page dans le bo
+
+add_action( 'admin_menu', 'simple_com_menu' );
+
+function simple_com_menu() {
+	add_options_page( 'My Plugin Options', 'Simple_com', 'manage_options', 'my-slug', 'my_plugin_callback' );
+}
+
+function simple_com_menu_callback() {
+	echo '<div class="wrap">';
+	echo '<h2>Simple com</h2>';
+	echo '</div>'; 
+}
 
 /* creation of the table key_post_user */
 
