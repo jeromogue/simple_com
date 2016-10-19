@@ -34,7 +34,7 @@ function simple_com_menu() {
 
 function simple_com_menu_callback() {
 	echo '<div class="wrap">';
-	echo '<h2>Simple com</h2>';
+	echo '<h2>Simple com Settings</h2>';
 	echo '</div>'; 
 }
 
