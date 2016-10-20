@@ -122,6 +122,7 @@ function simple_com_menu_callback() {
 		echo '</div>';
 		echo '<div>';
 		echo '<div>';
+		echo '<label for="url_share" >Change URL :</label>';
 		echo '<input type="text" name="url_share" id="url_share" value="'.$url_share_state.'"/>';
 		echo '</div>';
 		echo '<input type="submit" name="save_settings_simple_com" id="submit_options" class="options_bo_simple_com" value="Send" />';
