@@ -40,6 +40,7 @@ function simple_com_menu_callback() {
 
 		$facebook_state = $_POST["share_facebook"];
 		$mail_state     = $_POST["box_mail"];
+		$url_share 	 	= $_POST["url_share"];
 
 		$wpdb->update( 
 			'wp_options_simple_com', 
@@ -64,12 +65,26 @@ function simple_com_menu_callback() {
 			), 
 			array( '%s' ) 
 		);
+
+		$wpdb->update( 
+			'wp_options_simple_com', 
+			array( 
+				'option_state' => $url_share	// string
+			), 
+			array( 'option_name' => 'url_share' ), 
+			array( 
+				'%s'	// value1
+			), 
+			array( '%s' ) 
+		);		
 	}
 
 		$facebook_result = $wpdb->get_results( "SELECT option_state FROM wp_options_simple_com WHERE option_name = 'share_facebook'" );
 		$facebook_state = $facebook_result[0]->option_state;
 		$mail_result = $wpdb->get_results( "SELECT option_state FROM wp_options_simple_com WHERE option_name = 'box_mail'" );
 		$mail_state = $mail_result[0]->option_state;
+		$url_share_result = $wpdb->get_results( "SELECT option_state FROM wp_options_simple_com WHERE option_name = 'url_share'" );
+		$url_share_state = $url_share_result[0]->option_state;		
 
 		echo '<div class="wrap">';
 		echo '<h2>Simple com Settings</h2>';
@@ -106,6 +121,9 @@ function simple_com_menu_callback() {
 		echo '</select>';
 		echo '</div>';
 		echo '<div>';
+		echo '<div>';
+		echo '<input type="text" name="url_share" id="url_share" value="'.$url_share_state.'"/>';
+		echo '</div>';
 		echo '<input type="submit" name="save_settings_simple_com" id="submit_options" class="options_bo_simple_com" value="Send" />';
 		echo '</div>';
 		echo '</form>';
@@ -176,9 +194,28 @@ function create_options_table_data_mail() {
 	);
 }
 
+function create_options_table_data_url_share() {
+	global $wpdb;
+	
+	$option_name = 'url_share';
+	$option_state = '';
+	
+	$wp_options_simple_com = $wpdb->prefix . 'options_simple_com';
+	
+	$wpdb->insert( 
+		$wp_options_simple_com, 
+		array( 
+			'time' => current_time( 'mysql' ), 
+			'option_name' => $option_name, 
+			'option_state' => $option_state,
+		) 
+	);
+}
 register_activation_hook( __FILE__, 'create_options_table' );
 register_activation_hook( __FILE__, 'create_options_table_data_facebook' );
 register_activation_hook( __FILE__, 'create_options_table_data_mail' );
+register_activation_hook( __FILE__, 'create_options_table_data_url_share' );
+
 
 
 /* place for boxes */
