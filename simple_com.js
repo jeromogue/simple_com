@@ -14,6 +14,7 @@ window.onload = function(){
 		var subject = $('#subject_mail').val();
 		var users = $('#liste_users').val();
 		var message = $('#text_mail').val();
+
 		alert("sujet : " + subject + " et users : " + users + " et message : " + message);
 		$.ajax({
 			type: "POST",
@@ -28,36 +29,15 @@ window.onload = function(){
 		return false;
 	});
 
-	//Facebook
+	$('#copy_article').on('click', function(e){
+		var iframe = $('iframe#content_ifr').contents().find("p");
+		var value_iframe = iframe.html();
 
-	window.fbAsyncInit = function() {
-	FB.init({
-	appId      : '182783125460188',
-	xfbml      : true,
-	version    : 'v2.8'
+		alert(value_iframe);
+		$('#text_mail').val(value_iframe);
+
+		e.preventDefault();
+		return false;
 	});
-	FB.AppEvents.logPageView();
-	};
 
-
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8&appId=182783125460188";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-	document.getElementById('shareBtn').onclick = function() {
-		FB.ui({
-			method: 'share_open_graph',
-			action_type: 'og.likes',
-			action_properties: JSON.stringify({
-				object:'google.fr',
-			})
-		}, function(response){
-			// Debug response (optional)
-			console.log(response);
-		});
-	}
 };

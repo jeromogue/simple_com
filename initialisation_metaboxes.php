@@ -16,6 +16,7 @@ $mail_state = $mail_result[0]->option_state;
 
 	if ($facebook_state == 'yes'){
 		add_meta_box('1', 'Share Facebook', 'box_share_facebook', 'post');
+		wp_enqueue_script('simple_com_fb.js', '/wp-content/plugins/simple_com/simple_com_fb.js');
 	}
 	if ( $mail_state == 'yes'){
 		add_meta_box('2', 'Mail', 'box_mail', 'post');

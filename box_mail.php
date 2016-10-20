@@ -5,6 +5,7 @@ function box_mail($post){
 
 	$val_mail = get_post_meta($post->ID,'_box_mail', true);
 
+	echo '<button id="copy_article">Copy Article</button><br />';
 	echo '<label for="subject_mail"> Mail\'s subject :</label>';
 	echo '<input id="subject_mail" type="text" name="subject_mail" /><br />';
 	echo '<label for="list_target">Send to :</label>';
