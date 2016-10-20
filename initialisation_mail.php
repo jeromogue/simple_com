@@ -1,6 +1,6 @@
 <?php
 
-$users      = $_POST["users"];
+$users   = $_POST["users"];
 $subject = $_POST["subject"];
 $message = $_POST["message"];
 
