@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple-com\n"
-"POT-Creation-Date: 2016-10-21 11:04+0200\n"
-"PO-Revision-Date: 2016-10-21 11:09+0200\n"
+"POT-Creation-Date: 2016-10-21 11:38+0200\n"
+"PO-Revision-Date: 2016-10-21 11:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -22,26 +22,54 @@ msgstr ""
 "X-Poedit-SearchPath-6: simple_com_bo.js\n"
 "X-Poedit-SearchPath-7: style_simple_com.css\n"
 
-#: simple_com.php:94
-msgid "Share on Facebook"
-msgstr "Partager sur Facebook"
-
-#: simple_com.php:100 simple_com.php:115
-msgid "Yes"
-msgstr "Oui"
-
-#: simple_com.php:105 simple_com.php:120
-msgid "No"
-msgstr "Non"
-
-#: simple_com.php:109
-msgid "Place for mail"
-msgstr "Emplacement Mail"
-
-#: simple_com.php:125
+#: box_facebook.php:21 simple_com.php:134
 msgid "Change Url"
 msgstr "Changer l'url"
 
-#: simple_com.php:128
+#: box_facebook.php:26
+msgid "Share"
+msgstr "Partager"
+
+#: box_mail.php:8
+msgid "Copy article"
+msgstr "Copier l'article"
+
+#: box_mail.php:9
+msgid "Mail's subject"
+msgstr "Objet"
+
+#: box_mail.php:11
+msgid "Send to"
+msgstr "Destinataires"
+
+#: box_mail.php:13
+msgid "Target"
+msgstr "Ciblées"
+
+#: box_mail.php:14
+msgid "All users"
+msgstr "Tous les inscrits"
+
+#: box_mail.php:18 simple_com.php:137
 msgid "Send"
 msgstr "Envoyer"
+
+#: initialisation_metaboxes.php:18 simple_com.php:103
+msgid "Share on Facebook"
+msgstr "Partager sur Facebook"
+
+#: initialisation_metaboxes.php:22
+msgid "Send Mail"
+msgstr "Envoyer Mail"
+
+#: simple_com.php:109 simple_com.php:124
+msgid "Yes"
+msgstr "Oui"
+
+#: simple_com.php:114 simple_com.php:129
+msgid "No"
+msgstr "Non"
+
+#: simple_com.php:118
+msgid "Place for mail"
+msgstr "Emplacement Mail"
