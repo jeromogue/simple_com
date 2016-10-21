@@ -12,6 +12,15 @@ License: GPL2
 */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+define('PATH_Simple_com', basename(dirname(__FILE__)));
+
+// Traduction
+
+function simple_com_traduction(){
+	load_plugin_textdomain('simple_com', false, PATH_Simple_com.'/language');
+}
+add_action("init", 'simple_com_traduction');
+
 // lancement js et jquery
 
 function bbx_enqueue_scripts() {
@@ -91,41 +100,41 @@ function simple_com_menu_callback() {
 		echo '</div>';
 		echo '<form action="#" method="POST" name="option_simpl_com">';
 		echo '<div>';
-		echo '<label for="share_facebook">Share on Facebook :</label>';
+		echo '<label for="share_facebook">'.__("Share on Facebook", "simple_com").' :</label>';
 		echo '<select id="share_facebook" name="share_facebook">';
 		echo '<option ' . selected( 'yes', $users, false ) . ' value="yes"';
 		if ( $facebook_state == 'yes'){
 			echo 'selected';
 		}
-		echo '>Yes</option>';
+		echo '>'.__("Yes", "simple_com").'</option>';
 		echo '<option ' . selected( 'no', $users, false ) . ' value="no"';
 		if ( $facebook_state == 'no'){
 			echo 'selected';
 		}
-		echo '>No</option>';
+		echo '>'.__("No", "simple_com").'</option>';
 		echo '</select>';
 		echo '</div>';
 		echo '<div>';
-		echo '<label for="box_mail">Place for mail :</label>';
+		echo '<label for="box_mail">'.__("Place for mail", "simple_com").' :</label>';
 		echo '<select id="box_mail" name="box_mail">';
 		echo '<option ' . selected( 'yes', $users, false ) . ' value="yes"';
 		if ( $mail_state == 'yes'){
 			echo 'selected';
 		}
-		echo '>Yes</option>';
+		echo '>'.__("Yes", "simple_com").'</option>';
 		echo '<option ' . selected( 'no', $users, false ) . ' value="no"';
 		if ( $mail_state == 'no'){
 			echo 'selected';
 		}
-		echo '>No</option>';
+		echo '>'.__("No", "simple_com").'</option>';
 		echo '</select>';
 		echo '</div>';
 		echo '<div>';
 		echo '<div>';
-		echo '<label for="url_share" >Change URL :</label>';
+		echo '<label for="url_share" >'.__("Change Url", "simple_com").' :</label>';
 		echo '<input type="text" name="url_share" id="url_share" value="'.$url_share_state.'"/>';
 		echo '</div>';
-		echo '<input type="submit" name="save_settings_simple_com" id="submit_options" class="options_bo_simple_com" value="Send" />';
+		echo '<input type="submit" name="save_settings_simple_com" id="submit_options" class="options_bo_simple_com" value="'.__("Send", "simple_com").'" />';
 		echo '</div>';
 		echo '</form>';
 }
@@ -217,7 +226,30 @@ register_activation_hook( __FILE__, 'create_options_table_data_facebook' );
 register_activation_hook( __FILE__, 'create_options_table_data_mail' );
 register_activation_hook( __FILE__, 'create_options_table_data_url_share' );
 
+function change_url_ajax(){
+		
+		global $wpdb;
 
+		$url_share = $_POST["url"];
+		$wpdb->update( 
+			'wp_options_simple_com', 
+			array( 
+				'option_state' => $url_share	// string
+			), 
+			array( 'option_name' => 'url_share' ), 
+			array( 
+				'%s'	// value1
+			), 
+			array( '%s' ) 
+		);
+
+	$url_share_result = $wpdb->get_results( "SELECT option_state FROM wp_options_simple_com WHERE option_name = 'url_share'" );
+	$url_share_state = $url_share_result[0]->option_state;
+
+		wp_die($url_share_state);
+
+}
+add_action("wp_ajax_change_url_ajax", "change_url_ajax");
 
 /* place for boxes */
 

@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple-com\n"
+"POT-Creation-Date: 2016-10-21 11:04+0200\n"
+"PO-Revision-Date: 2016-10-21 11:09+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: box_facebook.php\n"
+"X-Poedit-SearchPath-1: box_mail.php\n"
+"X-Poedit-SearchPath-2: brouillon.php\n"
+"X-Poedit-SearchPath-3: initialisation_mail.php\n"
+"X-Poedit-SearchPath-4: initialisation_metaboxes.php\n"
+"X-Poedit-SearchPath-5: simple_com.php\n"
+"X-Poedit-SearchPath-6: simple_com_bo.js\n"
+"X-Poedit-SearchPath-7: style_simple_com.css\n"
+
+#: simple_com.php:94
+msgid "Share on Facebook"
+msgstr "Partager sur Facebook"
+
+#: simple_com.php:100 simple_com.php:115
+msgid "Yes"
+msgstr "Oui"
+
+#: simple_com.php:105 simple_com.php:120
+msgid "No"
+msgstr "Non"
+
+#: simple_com.php:109
+msgid "Place for mail"
+msgstr "Emplacement Mail"
+
+#: simple_com.php:125
+msgid "Change Url"
+msgstr "Changer l'url"
+
+#: simple_com.php:128
+msgid "Send"
+msgstr "Envoyer"

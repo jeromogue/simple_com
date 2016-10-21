@@ -16,14 +16,16 @@ function box_share_facebook(){
 	
 	$val_fb = get_post_meta($post->ID,'_box_share_facebook', true);
 
+	echo '<div id="load_new_url">';
 	echo '<div>';
-	echo '<label for="url_share" >Change URL :</label>';
+	echo '<label for="url_share" >'.__("Change Url", "simple_com").' :</label>';
 	echo '<input type="text" name="url_share" id="url_share" value="'.$url_share_state.'"/>';
 	echo '</div>';
 	echo '<div id="shareBtn" class="fb-share-button" data-href="'.$url_share_state.'" data-layout="button" data-size="small" data-mobile-iframe="false">';
 	echo '<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FEssai-199436430494197%2F&amp;src=sdkpreparse">';
-	echo 'Partager';
+	echo ''.__("Share", "simple_com").'';
 	echo '</a>';
+	echo '</div>';
 	echo '</div>';
 
 }

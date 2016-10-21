@@ -5,17 +5,17 @@ function box_mail($post){
 
 	$val_mail = get_post_meta($post->ID,'_box_mail', true);
 
-	echo '<button id="copy_article">Copy Article</button><br />';
-	echo '<label for="subject_mail"> Mail\'s subject :</label>';
+	echo '<button id="copy_article">'.__("Copy article", "simple_com").'</button><br />';
+	echo '<label for="subject_mail"> '.__("Mail's subject", "simple_com").' :</label>';
 	echo '<input id="subject_mail" type="text" name="subject_mail" /><br />';
-	echo '<label for="list_target">Send to :</label>';
+	echo '<label for="list_target">'.__("Send to", "simple_com").' :</label>';
 	echo '<select id="liste_users" name="list_target">';
-	echo '<option ' . selected( 'Target users', $users, false ) . ' value="target_users">Target</option>';
-	echo '<option ' . selected( 'All', $users, false ) . ' value="all_users">All users</option>';
+	echo '<option ' . selected( 'Target users', $users, false ) . ' value="target_users">'.__("Target", "simple_com").'</option>';
+	echo '<option ' . selected( 'All', $users, false ) . ' value="all_users">'.__("All users", "simple_com").'</option>';
 	echo '</select><br />';
 	echo '<label for="text_mail">Corpus area</label>';
 	echo '<textarea id="text_mail" name="text_mail" style="width:100%; height:200px;"></textarea><br />';
-	echo '<button id="send_mail">Send</button>';
+	echo '<button id="send_mail">'.__("Send", "simple_com").'</button>';
 
 
 }
